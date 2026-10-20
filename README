@@ -1,0 +1,14 @@
+Figma dev mode in helping understand CSS/frame structure 
+
+Chatgpt in initially helping explain css page structure. eg, generating graphs like:
+body
+└── .popupwindowfind
+    └── .content
+        ├── title
+        └── .buttons
+            ├── .button
+            │   └── .button-text
+            └── .button
+                └── .button-text
+
+Chatgpt in helping screen switching code understanding
