@@ -1,75 +1,129 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lost Baggage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="includes/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap">
+</head>
+<body>
 
-<html>
-
-    <head>
-
-        <title>Didn't Find It?</title>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-
-        <link rel="stylesheet" href="includes/styles.css">
-
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap">
-
-    </head>
-
-    <body>
-
-        <!-- Screen 1: baggage belt. Each belt-child is one strip. -->
-        <div id="belt-page">
-
+    <!-- The first screen shows the airport and moving belt. -->
+    <div class="page airport-page">
+        <div class="airport-setting">
+            <img class="airport-image" src="images/airport.svg" alt="">
+            <div class="baggage-sign">BAGGAGE CLAIM 3</div>
             <div class="belt">
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
-                <div class="belt-child"></div>
+                <img class="belt-stripes" src="images/belt-stripes.svg" alt="">
+                <img class="belt-stripes belt-copy" src="images/belt-stripes.svg" alt="">
             </div>
-
+            <div class="belt-front"></div>
         </div>
+        <div class="arrival-text">
+            <p>You arrived at Boston Logan Airport.</p>
+            <p>Your baggage didn’t show up.</p>
+            <button class="button start-button">
+                <span class="button-text">File a claim</span>
+            </button>
+        </div>
+    </div>
 
-        <!-- Screen 2: popup. Hidden for now with display: none in CSS. -->
-        <div id="popup-page">
-
-            <div class="popupwindowfind">
-
-                <div class="content">
-
-                    <div class="didnt-find-it">Didn't find it?</div>
-
-                    <div class="buttons">
-
-                        <button class="button" id="file-claim-button">
-                            <span class="button-text">Make a report</span>
-                        </button>
-
-                        <button class="button" id="keep-waiting-button">
-                            <span class="button-text">Keep waiting</span>
-                        </button>
-
-                    </div>
-
+    <!-- Clicking a fact fills its matching box, which cannot be typed into. -->
+    <div class="page claim-page">
+        <div class="claim-layout">
+            <div class="suitcase-info">
+                <div class="suitcase-photo">
+                    <img src="images/suitcase.png" alt="Your missing black suitcase">
                 </div>
-
+                <p>Your missing suitcase</p>
+                <div class="truths">
+                    <button class="truth">Black</button>
+                    <button class="truth">28-inch suitcase</button>
+                    <button class="truth">$1300+</button>
+                </div>
+                <p class="claim-hint">Click each fact to fill the form →</p>
             </div>
 
+            <!-- The form reuses the popup frame with a green background. -->
+            <div class="popupwindowfind claim-window green">
+                <div class="content">
+                    <h1>Baggage claim</h1>
+                    <div class="claim-fields">
+                        <div class="field">Suitcase color
+                            <div class="claim-box">Click a fact</div>
+                        </div>
+                        <div class="field">Suitcase size
+                            <div class="claim-box">Click a fact</div>
+                        </div>
+                        <div class="field">Estimate value
+                            <div class="claim-box">Click a fact</div>
+                        </div>
+                    </div>
+                    <button class="button submit-button">
+                        <span class="button-text">Submit</span>
+                    </button>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <script src="includes/scripts.js"></script>
+    <!-- The waiting screen shows the total number of days. -->
+    <div class="page review-page">
+        <div class="review-content">
+            <p>You have waited</p>
+            <div class="day-count">
+                <span class="day-digit">0</span>
+                <span class="day-digit">0</span>
+                <span class="day-label">days</span>
+            </div>
+            <p>Your case is still under review.</p>
+        </div>
+    </div>
 
-    </body>
+    <!-- The first result lets the visitor appeal or give up. -->
+    <div class="page declined-page">
+        <div class="popupwindowfind red">
+            <div class="content">
+                <h1>Declined</h1>
+                <p>Insufficient information</p>
+                <div class="buttons">
+                    <button class="button appeal-button"><span class="button-text">Appeal</span></button>
+                    <button class="button restart-button"><span class="button-text">Give up</span></button>
+                </div>
+                <p class="result-days"></p>
+            </div>
+        </div>
+    </div>
 
+    <!-- The second result offers $300 in compensation. -->
+    <div class="page offer-page">
+        <div class="popupwindowfind">
+            <div class="content">
+                <p>Would you accept $300 as compensation?</p>
+                <div class="buttons">
+                    <button class="button restart-button"><span class="button-text">Yes</span></button>
+                    <button class="button no-button"><span class="button-text">No</span></button>
+                </div>
+                <p class="result-days"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- The last result approves the full amount. -->
+    <div class="page approved-page">
+        <div class="popupwindowfind green">
+            <div class="content">
+                <h1>Approved!</h1>
+                <p>Congrats, you received full amount of your requested compensation!</p>
+                <div class="buttons">
+                    <button class="button accept-button"><span class="button-text">Accept!</span></button>
+                </div>
+                <p class="result-days"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="includes/scripts.js"></script>
+</body>
 </html>

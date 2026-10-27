@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1512" height="450" viewBox="0 0 1512 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Airport setting / windows, hanging cables, empty carousel" clip-path="url(#clip0_0_31)">
+<path id="Vector" d="M1512 0H0V450H1512V0Z" fill="#F7F7F7"/>
+<g id="Vector_2">
+<path d="M0 250H1512ZM160 0V250ZM460 0V250ZM1052 0V250ZM1352 0V250Z" fill="black"/>
+<path d="M0 250H1512M160 0V250M460 0V250M1052 0V250M1352 0V250" stroke-width="4" stroke="#D4D4D4"/>
+</g>
+<g id="Vector_3">
+<path d="M555 0V60ZM957 0V60Z" fill="black"/>
+<path d="M555 0V60M957 0V60" stroke-width="8" stroke="#616161"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_31">
+<rect width="1512" height="450" fill="white"/>
+</clipPath>
+</defs>
+</svg>
