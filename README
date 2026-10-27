@@ -11,31 +11,4 @@ body
             └── .button
                 └── .button-text
 
-Chatgpt in helping screen switching code understanding
-
-Local preview
-- Open index.html in a browser. No install or build step is needed.
-- index.html: all screens, using classes for layout and screen switching.
-- includes/styles.css: shared classes, screen layout, belt animation.
-- includes/scripts.js: hover, switching screens, filling the form, counting days.
-- images/: airport, belt stripes and suitcase exported from the Figma design.
-
-How to test
-File a claim → click each fact to fill the matching box → Submit.
-The boxes are plain divs, so they cannot be typed into.
-The demo follows a fixed order: Declined → Appeal → $300 offer → No → Approved.
-Give up and Yes clear the form and return to the airport.
-Accept! changes to Accepted and stays on the approved screen.
-Each review takes 21 pretend days; the total continues to 42 and 63 days.
-In includes/scripts.js, dayLength = 1000 means one real second per day.
-Change daysPerReview to change the number of days in each review.
-
-Class examples used as a reference
-- Backrooms-with-JS: functions, onclick, style.display, loops, setInterval.
-- Color-Planets: event listeners and changing HTML.
-- CSS-Planet-Animation: @keyframes and an infinite CSS animation.
-
-Comments starting with //～ mark JS patterns without a matching structure in _Resources.
-These include functions with custom parameters, pairing two element lists on click,
-splitting digits with %, repeated review rounds, and resetting several boxes on click.
-The hover helper also uses mouseleave, which is not in those examples.
+Chatgpt in helping screen switching code
