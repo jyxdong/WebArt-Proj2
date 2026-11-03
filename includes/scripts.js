@@ -28,16 +28,9 @@ document.querySelector(".start-button").onclick = function() {
     showPage("claim-page");
 };
 
-//～Use matching positions in two lists to copy each clicked fact into its box.
-let truths = document.getElementsByClassName("truth");
+// Get the three text boxes and the form message.
 let fields = document.getElementsByClassName("claim-box");
 let hint = document.querySelector(".claim-hint");
-for (let i = 0; i < truths.length; i++) {
-    truths[i].onclick = function() {
-        fields[i].innerHTML = truths[i].innerHTML;
-        hint.innerHTML = "Click each fact to fill the form →";
-    };
-}
 
 // Store the waiting time and the current review round.
 let days = 0;
@@ -79,16 +72,16 @@ function startReview() {
     }, dayLength);
 }
 
-// Submit the completed form, or ask the visitor to fill it first.
+//～Check each input.value before submitting the form.
 document.querySelector(".submit-button").onclick = function() {
     if (
-        fields[0].innerHTML === truths[0].innerHTML &&
-        fields[1].innerHTML === truths[1].innerHTML &&
-        fields[2].innerHTML === truths[2].innerHTML
+        fields[0].value !== "" &&
+        fields[1].value !== "" &&
+        fields[2].value !== ""
     ) {
         startReview();
     } else {
-        hint.innerHTML = "<strong>Click all three facts first.</strong>";
+        hint.innerHTML = "<strong>Fill in all three boxes first.</strong>";
     }
 };
 
@@ -96,21 +89,13 @@ document.querySelector(".submit-button").onclick = function() {
 document.querySelector(".appeal-button").onclick = startReview;
 document.querySelector(".no-button").onclick = startReview;
 
-// Accepting the final result changes the button text and stays on this screen.
-document.querySelector(".accept-button").onclick = function() {
-    document.querySelector(".accept-button .button-text").innerHTML = "Accepted";
+//～Each ending button opens its own final page instead of returning to the start.
+document.querySelector(".give-up-button").onclick = function() {
+    showPage("denied-final-page");
 };
-
-//～Give several buttons a click handler that clears all boxes and starts over.
-let restartButtons = document.getElementsByClassName("restart-button");
-for (let i = 0; i < restartButtons.length; i++) {
-    restartButtons[i].onclick = function() {
-        days = 0;
-        reviewRound = 0;
-        for (let j = 0; j < fields.length; j++) {
-            fields[j].innerHTML = "Click a fact";
-        }
-        hint.innerHTML = "Click each fact to fill the form →";
-        showPage("airport-page");
-    };
-}
+document.querySelector(".settle-button").onclick = function() {
+    showPage("settled-final-page");
+};
+document.querySelector(".accept-button").onclick = function() {
+    showPage("approved-final-page");
+};

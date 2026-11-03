@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="includes/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,200&display=swap">
 </head>
 <body>
 
@@ -22,27 +22,39 @@
         </div>
         <div class="arrival-text">
             <p>You arrived at Boston Logan Airport.</p>
-            <p>Your baggage didn’t show up.</p>
+            <p>Your baggage didn't show up.</p>
             <button class="button start-button">
                 <span class="button-text">File a claim</span>
             </button>
         </div>
     </div>
 
-    <!-- Clicking a fact fills its matching box, which cannot be typed into. -->
+    <!-- The claim page shows the missing suitcase beside the form. -->
     <div class="page claim-page">
         <div class="claim-layout">
             <div class="suitcase-info">
-                <div class="suitcase-photo">
-                    <img src="images/suitcase.png" alt="Your missing black suitcase">
+                <div class="suitcase-measure">
+                    <div class="suitcase-photo">
+                        <img src="images/suitcase.png" alt="Your missing black suitcase">
+                    </div>
+                    <div class="ruler">
+                        <span class="ruler-mark long-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark long-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark long-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark long-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark"></span>
+                        <span class="ruler-mark long-mark"></span>
+                    </div>
+                    <p class="ruler-label">28 inch</p>
                 </div>
-                <p>Your missing suitcase</p>
-                <div class="truths">
-                    <button class="truth">Black</button>
-                    <button class="truth">28-inch suitcase</button>
-                    <button class="truth">$1300+</button>
-                </div>
-                <p class="claim-hint">Click each fact to fill the form →</p>
+                <p class="suitcase-description">Your missing suitcase:<br>Case value: $100;<br>Items value: $1200</p>
             </div>
 
             <!-- The form reuses the popup frame with a green background. -->
@@ -51,15 +63,16 @@
                     <h1>Baggage claim</h1>
                     <div class="claim-fields">
                         <div class="field">Suitcase color
-                            <div class="claim-box">Click a fact</div>
+                            <input class="claim-box" type="text" placeholder="Type here">
                         </div>
                         <div class="field">Suitcase size
-                            <div class="claim-box">Click a fact</div>
+                            <input class="claim-box" type="text" placeholder="Type here">
                         </div>
                         <div class="field">Estimate value
-                            <div class="claim-box">Click a fact</div>
+                            <input class="claim-box" type="text" placeholder="Type here">
                         </div>
                     </div>
+                    <p class="claim-hint">Fill in all three boxes.</p>
                     <button class="button submit-button">
                         <span class="button-text">Submit</span>
                     </button>
@@ -89,7 +102,7 @@
                 <p>Insufficient information</p>
                 <div class="buttons">
                     <button class="button appeal-button"><span class="button-text">Appeal</span></button>
-                    <button class="button restart-button"><span class="button-text">Give up</span></button>
+                    <button class="button give-up-button"><span class="button-text">Give up</span></button>
                 </div>
                 <p class="result-days"></p>
             </div>
@@ -102,7 +115,7 @@
             <div class="content">
                 <p>Would you accept $300 as compensation?</p>
                 <div class="buttons">
-                    <button class="button restart-button"><span class="button-text">Yes</span></button>
+                    <button class="button settle-button"><span class="button-text">Yes</span></button>
                     <button class="button no-button"><span class="button-text">No</span></button>
                 </div>
                 <p class="result-days"></p>
@@ -120,6 +133,45 @@
                     <button class="button accept-button"><span class="button-text">Accept!</span></button>
                 </div>
                 <p class="result-days"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giving up after the first decline shows the denied statistics. -->
+    <div class="page denied-final-page">
+        <div class="final-content">
+            <p class="final-title">Hey, I am not surprised that this got denied.</p>
+            <div class="final-statistics">
+                <p>For the Boston Logan Airport TSA baggage claims filed in 2017,</p>
+                <p><strong>30% was denied, while only 42% of the cases were resolved.</strong></p>
+                <p>Only 9.6% of cases was approved or settled.</p>
+                <p>58% was still in review after the end of the year.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accepting the $300 offer shows the partial settlement statistics. -->
+    <div class="page settled-final-page">
+        <div class="final-content">
+            <p class="final-title">Do you know that<br>even receive a partial compensation is lucky?</p>
+            <div class="final-statistics">
+                <p>For the Boston Logan Airport TSA baggage claims filed in 2017,</p>
+                <p><strong>4.3% of the cases was settled and 5.3% was approved in full.</strong></p>
+                <p>58% was still in review after the end of the year.</p>
+                <p>30% was denied.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accepting the full amount shows the approved statistics. -->
+    <div class="page approved-final-page">
+        <div class="final-content">
+            <p class="final-title">You are Lucky!</p>
+            <div class="final-statistics">
+                <p>For the Boston Logan Airport TSA baggage claims filed in 2017,</p>
+                <p><strong>Only 5.3% of the cases was approved in full.</strong></p>
+                <p>58% was still in review after the end of the year.</p>
+                <p>30% was denied.</p>
             </div>
         </div>
     </div>
